@@ -1,0 +1,7 @@
+				wg.Add(1)
+.env
+*.jpg
+*.png
+*.jpeg
+images/
+images/*
