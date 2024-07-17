@@ -48,7 +48,8 @@ func main() {
 		fmt.Println("1. Copy Images")
 		fmt.Println("2. Delete Images Bucket")
 		fmt.Println("3. Upload Bucket")
-		fmt.Println("4. Sair")
+		fmt.Println("4. List Bucket")
+		fmt.Println("5. Sair")
 
 		// Lê a opção do usuário
 		scanner.Scan()
@@ -102,6 +103,14 @@ func main() {
 			}
 
 		case "4":
+			fmt.Println("Listando imagens do bucket...")
+
+			err := controller.ListBucketFiles()
+			if err != nil {
+				fmt.Println(err)
+			}
+
+		case "5":
 			fmt.Println("Saindo...")
 			return
 		default:
