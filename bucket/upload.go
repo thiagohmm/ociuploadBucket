@@ -124,8 +124,17 @@ func (b BucketConfig) UploadObject(objectName string) (string, error) {
 		return "", fmt.Errorf("Erro ao realizar upload do objeto:", err)
 	}
 
-	fmt.Printf("Upload de %s realizado com sucesso.\n", objectName)
+	deleteFile(filePath)
 
 	return ("Upload de " + objectName + " realizado com sucesso."), nil
 
+}
+
+func deleteFile(filePath string) error {
+	// Tenta deletar o arquivo
+	err := os.Remove(filePath)
+	if err != nil {
+		return fmt.Errorf("erro ao deletar o arquivo '%s': %w", filePath, err)
+	}
+	return nil
 }
