@@ -19,6 +19,25 @@ func init() {
 		return
 	}
 
+	pasta := "images"
+
+	// Verifica se a pasta existe
+	_, err = os.Stat(pasta)
+	if os.IsNotExist(err) {
+		// A pasta não existe, então cria
+		err := os.MkdirAll(pasta, os.ModePerm)
+		if err != nil {
+			// Retorna um erro se não conseguir criar a pasta
+			fmt.Errorf("erro ao criar a pasta %s: %v", pasta, err)
+		}
+		fmt.Printf("Pasta %s criada com sucesso.\n", pasta)
+	} else if err != nil {
+		// Retorna um erro se ocorrer um erro ao verificar a pasta
+		fmt.Errorf("erro ao verificar a pasta %s: %v", pasta, err)
+	} else {
+		fmt.Printf("Pasta %s já existe.\n", pasta)
+	}
+
 }
 
 func main() {
