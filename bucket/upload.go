@@ -48,7 +48,9 @@ func LoadConfig() (*BucketConfig, error) {
 func (b BucketConfig) UploadObject(objectName string) (string, error) {
 
 	prefix := b.BucketPrefix
-	objCompleteName := prefix + objectName
+	newName := strings.Trim(objectName, "/images")
+
+	objCompleteName := prefix + newName
 
 	// Ler conteúdo do arquivo da chave privada
 	keyFileContent, err := os.ReadFile(b.KeyFile)
